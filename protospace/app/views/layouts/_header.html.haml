@@ -11,7 +11,7 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           .btn.btn-primary.navbar-btn
-            %a{:href => new_user_session_path }
+            %a{href: new_user_session_path }
               Get Started
       //login
       %ul.nav.navbar-nav.navbar-right
@@ -21,10 +21,10 @@
             %span.caret
           %ul.dropdown-menu{:role => "menu"}
             %li
-              %a{:href => edit_user_registration_path } Profile Edit
+              %a{href: edit_user_registration_path } Profile Edit
             %li
-              %a{:href => destroy_user_session_path } Logout
+              %a{href: destroy_user_session_path } Logout
         %li
           .btn.btn-primary.navbar-btn
-            %a{:href => new_prototype_path }
+            %a{href: new_prototype_path }
               New Proto
