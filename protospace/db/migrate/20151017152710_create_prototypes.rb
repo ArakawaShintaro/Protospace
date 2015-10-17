@@ -3,7 +3,7 @@ class CreatePrototypes < ActiveRecord::Migration
     create_table :prototypes do |t|
       t.string :catchcopy
       t.text :concept
-      t.integer :user_id
+      t.references :user
       t.timestamps null: false
     end
   end
