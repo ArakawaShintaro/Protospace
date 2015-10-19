@@ -21,7 +21,7 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       :title,
-      images_attributes: [:id, :main_image, :sub_image, :prototype_id]
+      images_attributes: [:id, :image, :status, :prototype_id]
       )
     end
 end
