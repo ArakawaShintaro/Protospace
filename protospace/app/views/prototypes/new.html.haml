@@ -5,17 +5,18 @@
         .col-md-12
           = pf.text_field :title, placeholder: "Title", class: "proto-new-title"
       .row
+      = pf.fields_for :images do |f|
         .col-md-12
           .cover-image-upload
-            %input{:type => "file"}/
+            = f.file_field :main_image
         .col-md-12
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
-                %input{:type => "file"}/
+                = f.file_field :sub_image
             %li.list-group-item.col-md-4
               .image-upload
-                %input{:type => "file"}/
+                = f.file_field :sub_image
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +
