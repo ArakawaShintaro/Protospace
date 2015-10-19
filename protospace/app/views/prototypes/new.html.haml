@@ -8,15 +8,15 @@
       = pf.fields_for :images do |f|
         .col-md-12
           .cover-image-upload
-            = f.file_field :main_image
+            = f.file_field :image, value: "main"
         .col-md-12
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
-                = f.file_field :sub_image
+                = f.file_field :image, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload
-                = f.file_field :sub_image
+                = f.file_field :image, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +
