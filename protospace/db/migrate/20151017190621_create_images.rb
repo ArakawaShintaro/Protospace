@@ -1,8 +1,8 @@
 class CreateImages < ActiveRecord::Migration
   def change
     create_table :images do |t|
-      t.string :main_image
-      t.string :sub_image
+      t.string :image
+      t.integer :status
       t.integer :prototype_id
       t.timestamps null: false
     end
