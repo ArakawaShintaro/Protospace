@@ -11,6 +11,6 @@
         Remember me
     = f.submit "Sign in", class: "btn btn-lg btn-primary btn-block"
   .text-center
-    %p 
-      Not a member? 
-      %a{ href: new_user_registration_path } Sign up now
+    %p
+      Not a member?
+      = link_to "Sign up now", new_user_registration_path
