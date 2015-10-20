@@ -3,19 +3,25 @@
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
-          = pf.text_field :title, placeholder: "Title", class: "proto-new-title"
+          = pf.text_field :title, placeholder: "Title", required: true, class: "proto-new-title"
       .row
         .col-md-12
           .cover-image-upload
-            %input{:type => "file"}/
+            = pf.fields_for :images do |image|
+              = image.file_field :image
+              = image.hidden_field :status, value: "main", required: true
         .col-md-12
           %ul.proto-sub-list.list-group
-            %li.list-group-item.col-md-4
-              .image-upload
-                %input{:type => "file"}/
-            %li.list-group-item.col-md-4
-              .image-upload
-                %input{:type => "file"}/
+            = pf.fields_for :images do |image|
+              %li.list-group-item.col-md-4
+                .image-upload
+                  = image.file_field :image
+                  = image.hidden_field :status, value: "sub"
+            = pf.fields_for :images do |image|
+              %li.list-group-item.col-md-4
+                .image-upload
+                  = image.file_field :image
+                  = image.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +
