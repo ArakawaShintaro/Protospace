@@ -9,7 +9,7 @@ class PrototypesController < ApplicationController
 
   def create
     Prototype.create(prototype_params)
-    redirect_to action: :index
+    redirect_to :root
   end
 
 
