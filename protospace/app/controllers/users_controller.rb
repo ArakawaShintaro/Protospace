@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @prototypes = @user.prototypes
   end
 
   def edit
@@ -13,6 +14,6 @@ class UsersController < ApplicationController
 
   private
   def update_params
-    params.require(:user).permit(:name, :password, :works, :profile, :avatar, :member, :avatar)
+    params.require(:user).permit(:name, :password, :works, :profile, :avatar, :member)
   end
 end
