@@ -28,6 +28,6 @@ class PrototypesController < ApplicationController
       :user_id,
       :title,
       images_attributes: [:id, :image, :status, :prototype_id]
-      )
+      ).merge(user_id: current_user.id)
     end
 end
