@@ -8,8 +8,14 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    Prototype.create(prototype_params)
-    redirect_to :root
+    @prototype = Prototype.new(prototype_params)
+    if @prototype.save
+      redirect_to :root, notice: 'プロトタイプを保存しました'
+    else
+      render :new
+    end
+    # Prototype.create(prototype_params)
+    # redirect_to :root
   end
 
 
