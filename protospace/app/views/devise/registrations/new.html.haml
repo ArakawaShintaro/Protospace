@@ -1,11 +1,12 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { :class => 'container user-new' } ) do |f|
+  = devise_error_messages!
   .col-md-8.col-md-offset-2
     %header.row.user-nav.row
       .col-md-12
         %h2 Register
         .user-name_image.row
           .user-name.col-md-10
-            = f.text_field :name, placeholder: "Username"
+            = f.text_field :name, placeholder: "Username", autofocus: true
           .user-image.col-md-2
             %button.btn.btn-primary Add image
             = f.file_field :avatar
