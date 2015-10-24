@@ -10,7 +10,7 @@
             29
             %i Projects
         .proto-user
-          %span.degree 
+          %span.degree
             = @user.name
         .row
           .col-md-6
@@ -23,7 +23,7 @@
               = @user.works
 .container.proto-list
   .row
-    = render partial: "prototype", collection: @prototypes
+    = render partial: "prototypes/prototype", collection: @prototypes
 .text-center
   %ul.pagination
     %li.disabled
