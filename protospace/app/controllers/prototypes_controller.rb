@@ -22,6 +22,28 @@ class PrototypesController < ApplicationController
     # redirect_to :root
   end
 
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def update
+    prototype = Prototype.find(params[:id])
+    if prototype.user_id == current_user.id
+      prototype.update(prototype_params)
+    end
+
+    redirect_to :root, notice: 'プロトタイプを更新しました'
+  end
+
+  def destroy
+    prototype = Prototype.find(params[:id])
+    if prototype.user_id == current_user.id
+      prototype.destroy
+    end
+
+    redirect_to :root, notice: 'プロトタイプを削除しました'
+  end
+
 
   private
 
