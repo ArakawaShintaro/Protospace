@@ -53,7 +53,7 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       :title,
-      images_attributes: [:id, :image, :status, :prototype_id]
+      images_attributes: [:id, :image, :status]
       ).merge(user_id: current_user.id)
-    end
+  end
 end
