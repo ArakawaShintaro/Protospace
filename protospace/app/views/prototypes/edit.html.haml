@@ -1,0 +1,43 @@
+.container.proto-new
+  = form_for(@prototype) do |pf|
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          = pf.text_field :title, placeholder: "Title", required: true, class: "proto-new-title"
+      .row
+        .col-md-12
+          .cover-image-upload
+            = pf.fields_for :images do |image|
+              = image.file_field :image
+              = image.hidden_field :status, value: "main"
+        .col-md-12
+          %ul.proto-sub-list.list-group
+            = pf.fields_for :images do |image|
+              %li.list-group-item.col-md-4
+                .image-upload
+                  = image.file_field :image
+                  = image.hidden_field :status, value: "sub"
+            = pf.fields_for :images do |image|
+              %li.list-group-item.col-md-4
+                .image-upload
+                  = image.file_field :image
+                  = image.hidden_field :status, value: "sub"
+            %li.list-group-item.col-md-4
+              .image-upload-plus
+                %span +
+      .row.proto-description
+        .col-md-12
+          = pf.text_field :catchcopy, placeholder: "Catch Copy"
+        .col-md-12
+          = pf.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+        .col-md-12
+          %h4 Tag List
+          .row
+            .col-md-3
+              %input{:type => "text", :placeholder => "Web Design"}/
+            .col-md-3
+              %input{:type => "text", :placeholder => "UI"}/
+            .col-md-3
+              %input{:type => "text", :placeholder => "Application"}/
+      .row.text-center.proto-btn
+        %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Publish
