@@ -1,14 +1,22 @@
 .col-sm-4.col-md-3.proto-content
-  .thumbnail
-    = link_to image_tag("#{prototype.images.main.first.image}"), prototype_path(prototype)
-    .caption
-      %h3
-        = prototype.title
-      .proto-meta
-        .proto-date
-          Apr 26
-      %ul.proto-tag-list.list-inline
+  -if prototype.user.id == current_user.id
+    .dropdown.drop_menu_location
+      %button.btn.btn-default.dropdown-toggle{ id: "dropdownMenu", type: "button", data: { toggle: "dropdown" } } ACTION
+      %ul.dropdown-menu{ aria: {labelledby: "dropdownMenu1"} }
         %li
-          %a{:href => "#", :class => "btn btn-default"} iPad
+          =link_to "Delete", prototype_path(prototype), html: { method: :delete , method: "delete", rel: "nofollow"}, data: {method: "delete"}
         %li
-          %a{:href => "#", :class => "btn btn-default"} wireframe
+          =link_to "Edit", edit_prototype_path(prototype)
+    .thumbnail
+      = link_to image_tag("#{prototype.images.main.first.image}"), prototype_path(prototype)
+      .caption
+        %h3
+          = prototype.title
+        .proto-meta
+          .proto-date
+            Apr 26
+        %ul.proto-tag-list.list-inline
+          %li
+            %a{:href => "#", :class => "btn btn-default"} iPad
+          %li
+            %a{:href => "#", :class => "btn btn-default"} wireframe
