@@ -3,7 +3,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.find(id_params[:id])
   end
 
   def new
@@ -18,30 +18,27 @@ class PrototypesController < ApplicationController
     else
       render :new
     end
-    # Prototype.create(prototype_params)
-    # redirect_to :root
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.find(id_params[:id])
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id == current_user.id
-      prototype.update(prototype_params)
+    @prototype = Prototype.find(id_params[:id])
+    if @prototype.update(prototype_params)
+      redirect_to :root, notice: 'プロトタイプを更新しました'
+    else
+      render :edit
     end
-
-    redirect_to :root, notice: 'プロトタイプを更新しました'
   end
 
   def destroy
     prototype = Prototype.find(params[:id])
     if prototype.user_id == current_user.id
       prototype.destroy
+      redirect_to :root, notice: 'プロトタイプを削除しました'
     end
-
-    redirect_to :root, notice: 'プロトタイプを削除しました'
   end
 
 
@@ -55,5 +52,9 @@ class PrototypesController < ApplicationController
       :title,
       images_attributes: [:id, :image, :status]
       ).merge(user_id: current_user.id)
+  end
+
+  def id_params
+    params.permit([:id])
   end
 end
