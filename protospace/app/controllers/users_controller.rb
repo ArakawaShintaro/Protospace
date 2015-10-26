@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, except: :update
+  before_action :set_user, only: [:show, :edit]
 
   def show
     @prototypes = @user.prototypes
