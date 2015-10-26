@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :id_params, except: :update
+  before_action :set_user, except: :update
 
   def show
     @prototypes = @user.prototypes
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :password, :works, :profile, :avatar, :member)
   end
 
-  def id_params
+  def set_user
     @user = User.find(params[:id])
   end
 end

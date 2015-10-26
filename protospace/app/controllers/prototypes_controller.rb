@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :id_params, except: [:index, :new, :create]
+  before_action :set_prototype, except: [:index, :new, :create]
 
   def index
   end
@@ -52,7 +52,7 @@ class PrototypesController < ApplicationController
       ).merge(user_id: current_user.id)
   end
 
-  def id_params
+  def set_prototype
     @prototype = Prototype.find(params[:id])
   end
 end
