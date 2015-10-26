@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit]
+
   def show
-    @user = User.find(params[:id])
     @prototypes = @user.prototypes
   end
 
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(update_params)
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'プロフィールを編集しました'
     else
       render :edit
     end
@@ -18,5 +19,9 @@ class UsersController < ApplicationController
   private
   def update_params
     params.require(:user).permit(:name, :password, :works, :profile, :avatar, :member)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
