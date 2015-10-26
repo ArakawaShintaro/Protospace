@@ -1,9 +1,10 @@
 class PrototypesController < ApplicationController
+  before_action :id_params, except: [:index, :new, :create]
+
   def index
   end
 
   def show
-    @prototype = Prototype.find(id_params[:id])
   end
 
   def new
@@ -21,11 +22,9 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype = Prototype.find(id_params[:id])
   end
 
   def update
-    @prototype = Prototype.find(id_params[:id])
     if @prototype.update(prototype_params)
       redirect_to :root, notice: 'プロトタイプを更新しました'
     else
@@ -34,9 +33,8 @@ class PrototypesController < ApplicationController
   end
 
   def destroy
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id == current_user.id
-      prototype.destroy
+    if @prototype.user_id == current_user.id
+      @prototype.destroy
       redirect_to :root, notice: 'プロトタイプを削除しました'
     end
   end
@@ -55,6 +53,6 @@ class PrototypesController < ApplicationController
   end
 
   def id_params
-    params.permit([:id])
+    @prototype = Prototype.find(params[:id])
   end
 end
