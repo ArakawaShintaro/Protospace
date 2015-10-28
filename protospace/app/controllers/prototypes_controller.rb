@@ -15,7 +15,7 @@ class PrototypesController < ApplicationController
   def create
     @prototype = Prototype.new(prototype_params)
     if @prototype.save
-      redirect_to :root, notice: 'プロトタイプを保存しました'
+      redirect_to @prototype, notice: 'プロトタイプを保存しました'
     else
       render :new
     end
