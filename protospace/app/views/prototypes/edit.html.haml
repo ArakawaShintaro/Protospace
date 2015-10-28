@@ -1,9 +1,18 @@
+- if @prototype.errors.any?
+  .alert.alert-danger
+    %h2
+      = @prototype.errors.count
+      件のエラーが発生しました
+    %ul
+      - @prototype.error_messages.each do |message|
+        %li
+          = message
 .container.proto-new
   = form_for(@prototype) do |pf|
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
-          = pf.text_field :title, placeholder: "Title", required: true, class: "proto-new-title"
+          = pf.text_field :title, placeholder: "Title", class: "proto-new-title"
       .row
         .col-md-12
           .cover-image-upload
