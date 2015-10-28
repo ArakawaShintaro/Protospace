@@ -4,7 +4,7 @@
       = @prototype.errors.count
       件のエラーが発生しました
     %ul
-      - @prototype.error_messages.each do |message|
+      - @prototype.errors.full_messages.each do |message|
         %li
           = message
 .container.proto-new
