@@ -1,4 +1,4 @@
-- if @prototype.user.likes.find_by(prototype_id: @prototype.id)
+- if user_like.exists?(prototype_id: @prototype.id)
   %button.btn.btn-default.decrement-button
     = link_to image_tag("icom_heart_red.svg"), unlike_path(@prototype) , method: :delete, id: "like-button" , remote: :true
     Like
