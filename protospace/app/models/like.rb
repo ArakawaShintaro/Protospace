@@ -1,4 +1,4 @@
 class Like < ActiveRecord::Base
-  belongs_to :user_id
-  belongs_to :prototype_id
+  belongs_to :user
+  belongs_to :prototype, counter_cache: :like_count
 end
