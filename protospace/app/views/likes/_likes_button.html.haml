@@ -1,0 +1,12 @@
+- if user_like.exists?(prototype_id: @prototype)
+  %button.btn.btn-default.decrement-button
+    = link_to image_tag("icom_heart_red.svg"), unlike_path(@prototype) , method: :delete, id: "like-button" , remote: :true
+    Like
+    %span.num#like-sum
+    = @prototype.likes.count
+- else
+  %button.btn.btn-default.increment-button#like-button
+    = link_to image_tag("icon_heart.svg"), like_path(@prototype) , method: :post, id: "like-button" , remote: :true
+    Like
+    %span.num#like-sum
+    = @prototype.likes.count
