@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20151105174338) do
 
   create_table "comments", force: :cascade do |t|
@@ -20,6 +21,8 @@ ActiveRecord::Schema.define(version: 20151105174338) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+ActiveRecord::Schema.define(version: 20151030004624) do
 
   create_table "images", force: :cascade do |t|
     t.string   "image",        limit: 255
