@@ -1,5 +1,6 @@
 class Prototype < ActiveRecord::Base
   has_many :images, dependent: :delete_all
+  has_many :comments
   belongs_to :user
   has_many :likes
 
