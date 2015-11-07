@@ -1,5 +1,5 @@
 module LikesHelper
   def user_like
-    @prototype.user.likes
+    current_user.likes
   end
 end
