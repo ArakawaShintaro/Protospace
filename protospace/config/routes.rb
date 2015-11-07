@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'prototypes#ranking'
+  root 'rankings#index'
 
   post 'like/:prototype_id' => 'likes#create', as: 'like'
   delete 'unlike/:prototype_id' => 'likes#destroy', as: 'unlike'
 
   resources :prototypes, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :comments, only: [:create]
-    collection do
-      get 'newest'
-    end
   end
 
   resources :users, only: [:show, :edit, :update]
 
+  resources :newests, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
