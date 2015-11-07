@@ -1,14 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
-  def ranking
-    prototype_ids = Like.group(:prototype_id).order('count_prototype_id DESC').limit(8).count(:prototype_id).keys
-    @ranking_products = prototype_ids.map{ |id| Prototype.find(id) }
-  end
-
-  def newest
-    @prototypes = Prototype.order('id DESC').limit(8)
-  end
 
   def show
     @comment = Comment.new(prototype_id: @prototype)
