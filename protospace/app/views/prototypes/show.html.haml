@@ -14,7 +14,7 @@
             %span.degree
               = @prototype.user.member
 
-    .col-md-6.text-right
+    .col-md-6.text-right#like-button
       = render partial: "likes/likes_button"
   .row
     .col-md-9
@@ -43,15 +43,17 @@
   .row.proto-comments
     %h4.col-md-12
       Comments
-      %span.num (#{@prototype.comments.count})
+      %span.num#count
+        (#{@prototype.comments.count})
 
     #comments
       = render partial: "comments/comment", collection: @prototype.comments
-
-      = form_for [@prototype, @comment], class: "form-inline", role: "form", remote: true do |f|
-        %h4 Write a comment
-        .row
-          .form-group.col-md-10
-            = f.text_area :text, placeholder: "Your comments", rows: "3", class: "form-control", id: "comment-field"
-          .form-group.col-md-2
-            = f.submit "Comment", class: "btn btn-primary"
+- if user_signed_in?
+  = form_for [@prototype, @comment], class: "form-inline", role: "form", remote: true do |f|
+    %h4
+      Write a comment
+    .row
+      .form-group.col-md-10
+        = f.text_area :text, placeholder: "Your comments", rows: "3", class: "form-control", id: "comment-field"
+      .form-group.col-md-2
+        = f.submit "Comment", class: "btn btn-primary"
