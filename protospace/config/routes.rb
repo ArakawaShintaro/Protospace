@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'prototypes#index'
+  root 'rankings#index'
+
   post 'like/:prototype_id' => 'likes#create', as: 'like'
   delete 'unlike/:prototype_id' => 'likes#destroy', as: 'unlike'
+
+  namespace :prototypes do
+    resources :newests, only: [:index]
+  end
 
   resources :prototypes, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :comments, only: [:create]
