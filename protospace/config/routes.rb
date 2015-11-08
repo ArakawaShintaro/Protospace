@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   post 'like/:prototype_id' => 'likes#create', as: 'like'
   delete 'unlike/:prototype_id' => 'likes#destroy', as: 'unlike'
 
+  namespace :prototypes do
+    resources :newests, only: [:index]
+  end
+
   resources :prototypes, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :comments, only: [:create]
   end
 
   resources :users, only: [:show, :edit, :update]
 
-  resources :newests, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
