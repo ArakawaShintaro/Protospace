@@ -14,7 +14,7 @@
         = prototype.title
       .proto-meta
         .proto-date
-          Apr 26
+          = prototype.created_at.strftime("%b %d")
       %ul.proto-tag-list.list-inline
         - prototype.tags.each do |tag|
           %li
