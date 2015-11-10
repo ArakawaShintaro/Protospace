@@ -1,7 +1,7 @@
 class Prototypes::NewestsController < ApplicationController
 
 def index
-  @prototypes = Prototype.order('id DESC').limit(8)
+  @prototypes = Prototype.page(params[:page]).per(8).order('id DESC')
 end
 
 end
