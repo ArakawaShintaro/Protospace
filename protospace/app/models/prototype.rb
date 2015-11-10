@@ -4,6 +4,8 @@ class Prototype < ActiveRecord::Base
   belongs_to :user
   has_many :likes
 
+  acts_as_taggable
+
   accepts_nested_attributes_for :images, reject_if: :reject_images
   validates_presence_of :title, :catchcopy, :concept
 

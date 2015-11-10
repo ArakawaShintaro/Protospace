@@ -1,10 +1,10 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
-
   def show
     @comment = Comment.new(prototype_id: @prototype)
     @like = Like.find_by(prototype_id: @prototype.id)
+    @tags = @prototype.tag_list
   end
 
   def new
@@ -43,13 +43,14 @@ class PrototypesController < ApplicationController
   private
 
   def prototype_params
+    # tag_list = params[:tag_list]
     params.require(:prototype).permit(
       :catchcopy,
       :concept,
       :user_id,
       :title,
       images_attributes: [:id, :image, :status]
-      ).merge(user_id: current_user.id)
+      ).merge(user_id: current_user.id, tag_list: params[:tag_list])
   end
 
   def set_prototype
