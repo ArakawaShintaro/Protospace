@@ -49,9 +49,9 @@
       = render partial: "comments/comment", collection: @prototype.comments
 - if user_signed_in?
   = form_for [@prototype, @comment], class: "form-inline", role: "form", remote: true do |f|
-    %h4
+    %h4{ style: "padding-left: 100px;" }
       Write a comment
-    .row
+    .row{ class: "comment-style" }
       .form-group.col-md-10
         = f.text_area :text, placeholder: "Your comments", rows: "3", class: "form-control", id: "comment-field"
       .form-group.col-md-2
