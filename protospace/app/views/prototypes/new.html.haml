@@ -15,7 +15,7 @@
           = pf.text_field :title, placeholder: "Title", class: "proto-new-title"
       .row
         .col-md-12
-          .cover-image-upload
+          .cover-image-upload#main-image
             = pf.fields_for :images do |image|
               = image.file_field :image
               = image.hidden_field :status, value: "main"
@@ -23,12 +23,12 @@
           %ul.proto-sub-list.list-group
             = pf.fields_for :images do |image|
               %li.list-group-item.col-md-4
-                .image-upload
+                .image-upload#sub-image1
                   = image.file_field :image
                   = image.hidden_field :status, value: "sub"
             = pf.fields_for :images do |image|
               %li.list-group-item.col-md-4
-                .image-upload
+                .image-upload#sub-image2
                   = image.file_field :image
                   = image.hidden_field :status, value: "sub"
             %li.list-group-item.col-md-4
