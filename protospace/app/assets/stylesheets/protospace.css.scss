@@ -605,3 +605,26 @@ body {
   width: 700px;
   padding-left: 100px;
 }
+
+.cover-image-upload .thumb{
+  width: 600px;
+  height: 500px;
+}
+
+.image-upload .thumb{
+  width: 170px;
+  height: 200px;
+}
+
+.user-image .thumb{
+  width: 75px;
+  height: 75px;
+  position: relative;
+  right: 17px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+}
+
+.user-image .btn{
+  z-index: 1;
+}
