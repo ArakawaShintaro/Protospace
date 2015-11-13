@@ -43,7 +43,6 @@ class PrototypesController < ApplicationController
   private
 
   def prototype_params
-    # tag_list = params[:tag_list]
     params.require(:prototype).permit(
       :catchcopy,
       :concept,
@@ -54,7 +53,7 @@ class PrototypesController < ApplicationController
   end
 
   def set_prototype
-    @prototype = Prototype.find(params[:id])
+    @prototype = Prototype.includes(comments: [:user]).find(params[:id])
   end
 
 end
