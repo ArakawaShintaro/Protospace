@@ -53,7 +53,7 @@ class PrototypesController < ApplicationController
   end
 
   def set_prototype
-    @prototype = Prototype.includes(comments: [:user]).find(params[:id])
+    @prototype = Prototype.eager_load(comments: [:user]).find(params[:id])
   end
 
 end
